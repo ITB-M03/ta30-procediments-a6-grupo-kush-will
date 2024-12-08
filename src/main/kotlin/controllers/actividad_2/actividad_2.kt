@@ -23,17 +23,17 @@ fun menuCinema(scan: Scanner) {
     println("3 - Reserva de Seients")
     val pedirNumero = scan.nextInt()
     if (pedirNumero == 1) {
-        println(buidarSala(20,15))
+        println(buidarSala())
     }
     if (pedirNumero == 2) {
         println(seientsDisponibles())
     }
     if (pedirNumero == 3) {
-        println(reserva())
+        println(reserva(salaBuida))
     }
 }
 
-fun buidarSala(filas:Int, columnas:Int, matrix : Array<Char>) {
+fun buidarSala() {
     /*aqui definiremos la matriz que seran los asientos que haya en la sala
     como las filas y las columnas estan determinadas poir el problema no nos hace falta pedirlo*/
     val filas = 20
@@ -51,18 +51,35 @@ fun buidarSala(filas:Int, columnas:Int, matrix : Array<Char>) {
     }
 }
 
-fun seientsDisponibles(){
-    println(buidarSala(20,15))
+fun seientsDisponibles() {
+    println(reserva(salaBuida ))
 }
 
-fun reserva (){
-    //volveremos a recorrer la matriz y pediremos las cordenadas al usuario para la reserva
-    val scan = Scanner(System.`in`)
-    var numf = scan.nextInt()
-    val numC = scan.nextInt()
 
-
-}
+fun reserva (salaBuida:Array<Char>) {
+    val matrix2: Array<Char> = salaBuida
+        //recorreremos la matriz y donde nos diga las coordenada la cambiaremos por una X
+    println("Dame las coordenadas para reservar tu asiento")
+        val scanner = Scanner(System.`in`)
+    println("Introduce el numero de Fila:")
+        val numF = scanner.nextInt()
+    println("Introduce el numero de Columna:")
+        val numC = scanner.nextInt()
+        val matrix = Array(numF) {
+            CharArray(numC) { '_' }
+        }
+        for (i in 0..numF) {
+            for (j in 0..numC) {
+                if (numF >= 20 && numC >= 15) {
+                    println("ERROR")
+                } else if (numF <= 20 && numC <= 15 && numF > 0 && numC > 0) {
+                    if (i == numF && j == numC) {
+                        matrix[i][j] = 'X'
+                    }
+                }
+            }
+        }
+    }
 
 fun finalscan (scan:Scanner){
     scan.close()
