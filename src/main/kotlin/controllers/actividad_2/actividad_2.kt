@@ -4,7 +4,7 @@ import java.util.*
 fun main () {
     val scan = inicioscan()
     println(menuCinema(scan))
-    val salaBuida = buidarSala(20,15)
+    val salaBuida = buidarSala()
     val asientosDisponibles = seientsDisponibles()
     val asientosReservados = reserva()
     finalscan(scan)
@@ -33,11 +33,9 @@ fun menuCinema(scan: Scanner) {
     }
 }
 
-fun buidarSala() {
+fun buidarSala(filas:Int=20, columnas: Int= 15): Array<Char> {
     /*aqui definiremos la matriz que seran los asientos que haya en la sala
     como las filas y las columnas estan determinadas poir el problema no nos hace falta pedirlo*/
-    val filas = 20
-    val columnas = 15
     //creamos la matriz
     val matrix = Array(filas) {
         CharArray(columnas) { '_' }
@@ -49,6 +47,7 @@ fun buidarSala() {
             println(matrix[i][j])
         }
     }
+    return buidarSala()
 }
 
 fun seientsDisponibles() {
