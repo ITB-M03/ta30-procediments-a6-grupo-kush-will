@@ -15,10 +15,11 @@ fun main() {
             matrix[i][j] = '_'
         }
     }
-    val casos = scan.nextInt()
+    val casos  = scan.nextInt()
     repeat(casos) {
         menuCinema(scan, matrix)
     }
+
     finalscan(scan)
 }
 
@@ -81,17 +82,18 @@ fun reserva(sala: Array<CharArray>){
     println("Introduce el numero de Columna:")
     val numC = scanner.nextInt()
     if (numF >= 20 || numC >= 15) {
-                println("ERROR")
-            }
-        else if (numF <= 20 && numC <= 15 && numF > 0 && numC > 0) {
-                    sala[numF][numC] = 'X'
-            }
+        println("ERROR")
+    }
+    else if (numF <= 20 && numC <= 15 && numF > 0 && numC > 0) {
+        sala[numF][numC] = 'X'
+    }
     else if (sala[numF][numC] == 'X'){
         println("Ya esta reservado")
     }
-        }
-fun salir(){
-
+}
+fun salir(matrix: Array<CharArray>) {
+    println("Gracias por usar el sistema de reservas de cine. ¡Hasta pronto!")
+    System.exit(0) // Finaliza el programa.
 }
 
 fun finalscan(scan: Scanner) {
