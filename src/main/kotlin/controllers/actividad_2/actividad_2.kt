@@ -11,15 +11,12 @@ fun main() {
         CharArray(columnas) { '_' }
     }
     //iremos recorriendo la matriz y la printaremos
-    for (i in 0..filas) {
-        for (j in 0..columnas) {
+    for (i in 0 until filas) {
+        for (j in 0 until columnas) {
             matrix[i][j] = '_'
-            println(matrix[i][j])
         }
     }
-    buidaSala(matrix)
-    val asientosDisponibles = seientsDisponibles(matrix)
-    val asientosReservados = reserva(matrix)
+
     println(menuCinema(scan,matrix))
     finalscan(scan)
 }
@@ -63,14 +60,15 @@ fun seientsDisponibles(matrix: Array<CharArray>) {
     for (i in 0 until matrix.size) {
         for (j in 0 until matrix[i].size) {
             matrix[i][j] = '_'
-            println(matrix[i][j])
+            print(matrix[i][j] + " ")
         }
+        println()
     }
 
 }
 
 
-fun reserva(salaBuida: Array<CharArray>): Array<CharArray> {
+fun reserva(salaBuida: Array<CharArray>){
     //recorreremos la matriz y donde nos diga las coordenada la cambiaremos por una X
     println("Dame las coordenadas para reservar tu asiento")
     val scanner = Scanner(System.`in`)
@@ -92,7 +90,6 @@ fun reserva(salaBuida: Array<CharArray>): Array<CharArray> {
             }
         }
     }
-    return reserva(salaBuida)
 }
 
 fun finalscan(scan: Scanner) {
