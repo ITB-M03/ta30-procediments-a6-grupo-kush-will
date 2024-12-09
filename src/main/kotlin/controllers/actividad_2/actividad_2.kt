@@ -1,6 +1,5 @@
 package controllers.actividad_2
 
-import controllers.ejercicio_1.trasladarPunto
 import java.util.*
 
 fun main() {
@@ -17,7 +16,9 @@ fun main() {
         }
     }
 
-    println(menuCinema(scan,matrix))
+    repeat(10) {
+        menuCinema(scan, matrix)
+    }
     finalscan(scan)
 }
 
@@ -36,11 +37,11 @@ fun menuCinema(scan: Scanner, matrix: Array<CharArray>) {
         }
 
         2 -> {
-            println(seientsDisponibles(matrix))
+            seientsDisponibles(matrix)
         }
 
         3 -> {
-            println(reserva(matrix))
+            reserva(matrix)
         }
     }
 }
@@ -59,7 +60,6 @@ como las filas y las columnas estan determinadas poir el problema no nos hace fa
 fun seientsDisponibles(matrix: Array<CharArray>) {
     for (i in 0 until matrix.size) {
         for (j in 0 until matrix[i].size) {
-            matrix[i][j] = '_'
             print(matrix[i][j] + " ")
         }
         println()
@@ -68,7 +68,7 @@ fun seientsDisponibles(matrix: Array<CharArray>) {
 }
 
 
-fun reserva(salaBuida: Array<CharArray>){
+fun reserva(sala: Array<CharArray>){
     //recorreremos la matriz y donde nos diga las coordenada la cambiaremos por una X
     println("Dame las coordenadas para reservar tu asiento")
     val scanner = Scanner(System.`in`)
@@ -76,21 +76,16 @@ fun reserva(salaBuida: Array<CharArray>){
     val numF = scanner.nextInt()
     println("Introduce el numero de Columna:")
     val numC = scanner.nextInt()
-    val matrix = Array(numF) {
-        CharArray(numC) { '_' }
-    }
-    for (i in 0..numF) {
-        for (j in 0..numC) {
-            if (numF >= 20 && numC >= 15) {
+    if (numF >= 20 || numC >= 15) {
                 println("ERROR")
-            } else if (numF <= 20 && numC <= 15 && numF > 0 && numC > 0) {
-                if (i == numF && j == numC) {
-                    matrix[i][j] = 'X'
-                }
             }
-        }
+        else if (numF <= 20 && numC <= 15 && numF > 0 && numC > 0) {
+                    sala[numF][numC] = 'X'
+            }
+    else if (sala[numF][numC] == 'X'){
+        println("ERROR")
     }
-}
+        }
 
 fun finalscan(scan: Scanner) {
     scan.close()
