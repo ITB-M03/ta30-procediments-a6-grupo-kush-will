@@ -15,8 +15,8 @@ fun main() {
             matrix[i][j] = '_'
         }
     }
-
-    repeat(10) {
+    val casos = scan.nextInt()
+    repeat(casos) {
         menuCinema(scan, matrix)
     }
     finalscan(scan)
@@ -31,6 +31,7 @@ fun menuCinema(scan: Scanner, matrix: Array<CharArray>) {
     println("1 - Buidar sala")
     println("2 - Visualitzar seients disponibles")
     println("3 - Reserva de Seients")
+    println("4 - Salir de la reserva")
     when (scan.nextInt()) {
         1 -> {
             buidaSala(matrix)
@@ -42,6 +43,9 @@ fun menuCinema(scan: Scanner, matrix: Array<CharArray>) {
 
         3 -> {
             reserva(matrix)
+        }
+        4 -> {
+            salir(matrix)
         }
     }
 }
@@ -83,9 +87,12 @@ fun reserva(sala: Array<CharArray>){
                     sala[numF][numC] = 'X'
             }
     else if (sala[numF][numC] == 'X'){
-        println("ERROR")
+        println("Ya esta reservado")
     }
         }
+fun salir(){
+
+}
 
 fun finalscan(scan: Scanner) {
     scan.close()
